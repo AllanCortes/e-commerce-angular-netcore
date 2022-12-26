@@ -1,3 +1,4 @@
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -15,7 +16,8 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
-          services.AddControllers();
+      services.AddScoped<IProductRepository, ProductRepository>();
+      services.AddControllers();
           services.AddDbContext<StoreContext>(options =>{
 
               string connectionString = _config.GetConnectionString("DefaultConnection");
