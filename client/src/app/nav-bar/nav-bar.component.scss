@@ -1,0 +1,52 @@
+/**** Navbar CSS ********************************/
+.navbar{
+  padding : 0px 0px;
+  position : fixed;
+  width : 100%;
+  top : 0;
+  z-index : 9999;
+  transition: 0.32 ease-in-out;
+  background-color: #07264b;
+}
+.navbar-brand {
+    width: 10%;
+    padding : 0 25px;
+}
+.navbar .nav-link{
+  font-weight: 400;
+  font-size: 20px;
+  opacity: 0.75;
+  color : #fff !important;
+  letter-spacing: 0.8px;
+  padding: 0 20px;
+}
+.navbar .nav-link:hover {
+  opacity: 1;
+}
+.nav-link:active{
+    border-bottom: 3px solid #fff !important;
+}
+.shopping-login{
+  padding:0 35px;
+  margin-top: 15px;
+}
+.shopping-login .btn{
+  color : #fff !important;
+  margin-bottom: 15px;
+
+}
+.shopping-login .btn:not(:last-child) {
+    margin-right: 12px;
+}
+.shopping-login .cart-no{
+  position:absolute;
+  min-height: 25px;
+  min-width: 25px;
+  border-radius: 50%;
+  font-size: 1em;
+  background:blueviolet;
+  color:white;
+  text-align: center;
+  top:-27px;
+  right:15px;
+}
