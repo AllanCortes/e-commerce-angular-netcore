@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+
+    <section class="col-3">
+      <h5 class="text-warning ">Sort</h5>
+      <select class="form-select" (change)="onSortSelected($event.target.value)">
+        <option *ngFor="let sort of sortOptions" [value]="sort.value">
+          {{sort.name}}
+        </option>
+      </select>
+
+
+      <h5 class="text-warning mt-3">Brands</h5>
+      <ul class="list-group ">
+        <li class="list-group-item" *ngFor="let brand of brands" [class.active]="brand.id === this.shopParams.brandId"
+          [value]="brand.id" (click)="onBrandSelected(brand.id)">
+          {{brand.name}}
+        </li>
+      </ul>
+      <h5 class="text-warning mt-3">Types</h5>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let type of types" [class.active]="type.id === this.shopParams.typeId"
+          [value]="type.id" (click)="onTypeSelected(type.id)">{{type.name}}</li>
+      </ul>
+    </section>
+
+    <section class="col-9">
+      <div class="d-flex justify-content-between align-items-center ">
+
+        <app-paging-header [totalCount]="totalCount" [pageSize]="this.shopParams.pageSize"
+          [pageNumber]="this.shopParams.pageNumber">
+        </app-paging-header>
+
+        <form class=" d-flex" role="search">
+          <input (keyup)="onSearch()" class="form-control me-2" #search type=" search" placeholder="Search"
+            aria-label="Search">
+          <button (click)="onReset" class="btn btn-outline-success ">
+            <svg width="20px" height="20px" viewBox="0 1 21 21" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" fill-rule="evenodd" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"
+                transform="matrix(0 1 1 0 2.5 2.5)">
+                <path
+                  d="m3.98652376 1.07807068c-2.38377179 1.38514556-3.98652376 3.96636605-3.98652376 6.92192932 0 4.418278 3.581722 8 8 8s8-3.581722 8-8-3.581722-8-8-8" />
+                <path d="m4 1v4h-4" transform="matrix(1 0 0 -1 0 6)" />
+              </g>
+            </svg>
+          </button>
+        </form>
+      </div>
+      <div class="album py-3  bg-light">
+        <div class="container ">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col " *ngFor="let product of products">
+              <app-product-item [product]="product"></app-product-item>
+            </div>
+            <div class="col mx-auto">
+              <div class="card notFound align-items-center" style="width: 18rem;" *ngIf="totalCount === 0">
+                <svg class="notFound" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
+                  text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
+                  clip-rule="evenodd" viewBox="0 0 424 511.51">
+                  <path fill-rule="nonzero"
+                    d="M174.43 443.27H21.31C9.54 443.27 0 433.73 0 421.97V21.3C0 9.51 9.52 0 21.31 0h200.94c3.64 0 6.97 1.66 9.15 4.36l104.84 102.09c5.64 5.64 8.62 10.07 8.62 11.43l-.02 135.35c-7.59-3.2-15.53-5.72-23.76-7.49l-.01-113.62h-98.82c-6.64 0-11.94-5.41-11.94-11.95V23.69H23.8v395.78h140.26c2.7 8.32 6.18 16.28 10.37 23.8zm118.07-169.1c28.59 0 54.48 11.59 73.22 30.33 18.75 18.74 30.33 44.63 30.33 73.23 0 20.92-6.2 40.39-16.87 56.68L424 483.26l-30.9 28.25-43.23-47.56c-16.42 10.95-36.15 17.34-57.37 17.34-28.6 0-54.49-11.6-73.22-30.34-18.75-18.74-30.34-44.63-30.34-73.22 0-28.6 11.59-54.49 30.33-73.23 18.74-18.74 44.63-30.33 73.23-30.33zm59.62 43.93c-15.25-15.26-36.33-24.7-59.62-24.7s-44.37 9.44-59.62 24.7c-15.26 15.26-24.7 36.34-24.7 59.63 0 23.28 9.44 44.37 24.7 59.62 15.25 15.26 36.33 24.69 59.62 24.69s44.37-9.43 59.62-24.69c15.26-15.26 24.7-36.34 24.7-59.62 0-23.29-9.44-44.37-24.7-59.63zm-36.35 21.39 14.49 14.57-23.37 23.67 23.39 23.69-14.53 14.49-23.25-23.54-23.27 23.58-14.49-14.57 23.36-23.67-23.38-23.69 14.53-14.49 23.24 23.54 23.28-23.58z" />
+                </svg>
+                <div class="card-body">
+                  <h5 class="card-title">Not Found</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center" *ngIf="totalCount > 0">
+        <app-pager [pageSize]="shopParams.pageSize" [totalCount]="totalCount"
+          (pageChanged)="onPageChanged($event)"></app-pager>
+      </div>
+    </section>
+  </div>
