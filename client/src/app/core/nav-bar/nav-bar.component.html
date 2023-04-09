@@ -1,32 +1,30 @@
-
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <img src="/assets/images/logo-store.png" style="max-height: 100px;" alt="logo" class="logo" routerLink="/">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a routerLink="/"><img src="/assets/images/logo-store.png" style="max-height: 100px;" alt="logo" class="logo"></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span>
-        <fa-icon style="color:#fff !important; font-size:28px"[icon]="faBars"></fa-icon>
+        <fa-icon style="color:#fff !important; font-size:28px" [icon]="faBars"></fa-icon>
       </span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Features</a>
+          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Enterprise</a>
+          <a class="nav-link" routerLink="/shop">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Support</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" routerLink="/contact">Contact</a>
         </li>
 
       </ul>
       <div class="shopping-login">
-        <a class ="position-relative">
-          <fa-icon class=" p-4 fa fa-2x text-light "[icon]="faCartShopping"></fa-icon>
-          <div class ="cart-no">5</div>
+        <a class="position-relative">
+          <fa-icon class=" p-4 fa fa-2x text-light " [icon]="faCartShopping"></fa-icon>
+          <div class="cart-no">5</div>
         </a>
         <a class="btn btn-outline-primary">Login</a>
         <a class="btn btn-outline-primary ">Sign up</a>
